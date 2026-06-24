@@ -1,21 +1,19 @@
-import React from "react";
-import Header from "./Header";
+import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
 
-/**
- * Layout wraps every page with a consistent Header, Navbar, and Footer.
- * The `children` prop is the page-specific content rendered by the router
- * (Dashboard, Tasks, or About), so Header/Navbar/Footer never unmount
- * while navigating between routes.
- */
-export default function Layout({ children }) {
+// Shared layout used on every page: navbar + main content area
+export default function Layout() {
   return (
     <div className="layout">
-      <Header />
+      <header className="app-header">
+        <h1>Task Manager</h1>
+      </header>
+
       <Navbar />
-      <main className="main-content">{children}</main>
-      <Footer />
+
+      <main className="main-content">
+        <Outlet />
+      </main>
     </div>
   );
 }
