@@ -1,48 +1,33 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import useTasks from "../hooks/useTasks";
 
-export default function Dashboard() {
-  const { total, completed, pending } = useTasks();
-
-  const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
+export default function Dashboard({ tasks }) {
+  const total = tasks.length;
+  const completed = tasks.filter((task) => task.completed).length;
+  const pending = total - completed;
 
   return (
     <section>
-      <h2>Welcome back 👋</h2>
-      <p className="subtitle">
-        Here's a quick overview of your tasks. Stay on top of things!
-      </p>
+      <h2>Dashboard</h2>
+      <p className="subtitle">Summary of your current tasks.</p>
 
-      {/* Stat cards */}
-      <div className="card-grid">
-        <div className="card">
+      <div className="stats-grid">
+        <div className="stat-card">
           <h3>{total}</h3>
           <p>Total Tasks</p>
         </div>
-        <div className="card">
+        <div className="stat-card">
           <h3>{completed}</h3>
-          <p>Completed</p>
+          <p>Completed Tasks</p>
         </div>
-        <div className="card">
+        <div className="stat-card">
           <h3>{pending}</h3>
-          <p>Pending</p>
-        </div>
-        <div className="card">
-          <h3>{percent}%</h3>
-          <p>Completion Rate</p>
+          <p>Pending Tasks</p>
         </div>
       </div>
 
-      {/* Quick navigation buttons */}
-      <div className="quick-actions">
-        <Link to="/tasks" className="btn btn-primary">
-          Manage Tasks
-        </Link>
-        <Link to="/about" className="btn btn-secondary">
-          About This App
-        </Link>
-      </div>
+      <Link to="/tasks" className="btn btn-primary">
+        Go to Tasks
+      </Link>
     </section>
   );
 }
