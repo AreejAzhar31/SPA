@@ -1,18 +1,14 @@
-import TaskForm from "../components/TaskForm.jsx";
-import TaskList from "../components/TaskList.jsx";
+import TaskForm from "../components/TaskForm";
+import TaskList from "../components/TaskList";
 
-// Tasks.jsx
-// Main task management page. Composes TaskForm and TaskList,
-// passing down tasks and handlers received from App.jsx.
-
-function Tasks({ tasks, onAdd, onToggle, onDelete }) {
+export default function Tasks({ tasks, onAdd, onToggle, onDelete }) {
   return (
-    <div>
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">Tasks</h2>
+    <section>
+      <h2>Tasks</h2>
+      <p className="subtitle">Add, complete, or delete your tasks.</p>
+
       <TaskForm onAdd={onAdd} />
       <TaskList tasks={tasks} onToggle={onToggle} onDelete={onDelete} />
-    </div>
+    </section>
   );
 }
-
-export default Tasks;

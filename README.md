@@ -1,52 +1,54 @@
-# Task Manager (React + Redux + Tailwind)
+# Task Manager SPA
 
-Same SPA Task Manager assignment, now using:
-- **Redux Toolkit** for state management (instead of local `useState`/custom hook only)
-- **localStorage** so tasks persist across page reloads
-- **Tailwind CSS** for styling (instead of plain CSS)
+A simple React Single Page Application for managing tasks. Built as a university assignment.
 
 ## How to Run
 
-```
+1. Install dependencies:
+
+```bash
 npm install
+```
+
+2. Start the development server:
+
+```bash
 npm run dev
 ```
 
-Open the printed local URL (usually http://localhost:5173).
+3. Open the URL shown in the terminal (usually `http://localhost:5173`).
 
-## What changed from the plain version
+4. Build for production:
 
-| Concern | Before | Now |
-|---|---|---|
-| State | `useState` in a custom hook | Redux Toolkit slice (`store/tasksSlice.js`) |
-| Persistence | None (state reset on refresh) | Saved to `localStorage`, restored on load |
-| Styling | Single custom CSS file | Tailwind utility classes |
+```bash
+npm run build
+```
 
-## New/Updated Files
+## Project Structure
 
 ```
 src/
-├── store/
-│   ├── tasksSlice.js   # Redux slice: state + addTask/toggleTask/deleteTask reducers
-│   └── index.js        # configureStore + subscribes to save state to localStorage
-├── utils/
-│   └── localStorage.js # loadTasks()/saveTasks() helpers
-├── hooks/
-│   └── useTasks.js      # Wraps useSelector/useDispatch so components stay simple
-├── data.js              # Sample tasks used only on first run (no saved data yet)
-├── index.css            # Tailwind directives (@tailwind base/components/utilities)
-├── App.jsx              # Routes — now pulls tasks from useTasks (Redux) instead of local state
-└── main.jsx             # Wraps the app in <Provider store={store}>
+├── pages/
+│   ├── Dashboard.jsx   # Summary page (total, completed, pending)
+│   ├── Tasks.jsx       # Task management page
+│   └── About.jsx       # About the app and assignment
+├── components/
+│   ├── Layout.jsx      # Shared layout with Navbar and Outlet
+│   ├── Navbar.jsx      # Navigation links
+│   ├── TaskForm.jsx    # Form to add a new task
+│   ├── TaskList.jsx    # Renders the list of tasks
+│   └── TaskItem.jsx    # Single task row (checkbox + delete)
+├── styles/
+│   └── App.css         # Global styles
+├── data.js             # Initial sample tasks
+├── App.jsx             # Routes and task state
+└── main.jsx            # App entry point
 ```
 
-All `pages/` and `components/` files are unchanged in responsibility — only their
-CSS classes were switched from custom classes to Tailwind utility classes.
+## Routes
 
-## How localStorage persistence works
-
-1. `tasksSlice.js`'s `initialState` calls `loadTasks()` — if localStorage has
-   saved tasks, those are used; otherwise it falls back to `data.js`'s sample tasks.
-2. `store/index.js` calls `store.subscribe(...)`, which runs after every
-   dispatched action and saves the current tasks state back to localStorage.
-
-This keeps persistence logic in one place, separate from the UI components.
+| Route    | Page      |
+|----------|-----------|
+| `/`      | Dashboard |
+| `/tasks` | Tasks     |
+| `/about` | About     |

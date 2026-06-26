@@ -1,35 +1,33 @@
-// Dashboard.jsx
-// Shows summary statistics: total, completed, and pending tasks.
+import { Link } from "react-router-dom";
 
-function Dashboard({ tasks }) {
-  const totalTasks = tasks.length;
-  const completedTasks = tasks.filter((task) => task.completed).length;
-  const pendingTasks = totalTasks - completedTasks;
-
-  const stats = [
-    { label: "Total Tasks", value: totalTasks },
-    { label: "Completed", value: completedTasks },
-    { label: "Pending", value: pendingTasks },
-  ];
+export default function Dashboard({ tasks }) {
+  const total = tasks.length;
+  const completed = tasks.filter((task) => task.completed).length;
+  const pending = total - completed;
 
   return (
-    <div>
-      <h2 className="text-2xl font-semibold text-gray-800 mb-1">Dashboard</h2>
-      <p className="text-gray-500 mb-6">Here is a quick overview of your tasks.</p>
+    <section>
+      <h2>Dashboard</h2>
+      <p className="subtitle">Summary of your current tasks.</p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="bg-white rounded-lg shadow-sm p-5 text-center"
-          >
-            <p className="text-3xl font-bold text-gray-800">{stat.value}</p>
-            <p className="text-gray-500 mt-1">{stat.label}</p>
-          </div>
-        ))}
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h3>{total}</h3>
+          <p>Total Tasks</p>
+        </div>
+        <div className="stat-card">
+          <h3>{completed}</h3>
+          <p>Completed Tasks</p>
+        </div>
+        <div className="stat-card">
+          <h3>{pending}</h3>
+          <p>Pending Tasks</p>
+        </div>
       </div>
-    </div>
+
+      <Link to="/tasks" className="btn btn-primary">
+        Go to Tasks
+      </Link>
+    </section>
   );
 }
-
-export default Dashboard;

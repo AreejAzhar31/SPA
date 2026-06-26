@@ -6,9 +6,8 @@ import About from "./pages/About.jsx";
 import useTasks from "./hooks/useTasks.js";
 
 // App.jsx
-// Defines the app's routes. Task state now lives in the Redux
-// store and is accessed through the useTasks hook, so this
-// component just wires that data into the pages.
+// Defines the app's routes. Task state and logic live in the
+// useTasks custom hook, keeping this component focused on routing.
 
 function App() {
   const { tasks, addTask, toggleTask, deleteTask } = useTasks();

@@ -1,16 +1,12 @@
-import TaskItem from "./TaskItem.jsx";
+import TaskItem from "./TaskItem";
 
-// TaskList.jsx
-// Renders the tasks as TaskItem components, or an empty-state
-// message when there are no tasks.
-
-function TaskList({ tasks, onToggle, onDelete }) {
+export default function TaskList({ tasks, onToggle, onDelete }) {
   if (tasks.length === 0) {
-    return <p className="text-gray-500 italic">No tasks yet. Add one above!</p>;
+    return <p className="empty-state">No tasks yet. Add your first task above!</p>;
   }
 
   return (
-    <ul>
+    <ul className="task-list">
       {tasks.map((task) => (
         <TaskItem
           key={task.id}
@@ -22,5 +18,3 @@ function TaskList({ tasks, onToggle, onDelete }) {
     </ul>
   );
 }
-
-export default TaskList;
