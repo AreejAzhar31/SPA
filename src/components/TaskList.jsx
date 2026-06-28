@@ -1,24 +1,20 @@
-import { useSelector } from "react-redux";
-import TaskItem from "./TaskItem.jsx";
+import TaskItem from "./TaskItem";
 
-const TaskList = () => {
-  const tasks = useSelector((state) => state.tasks.tasks);
-
+export default function TaskList({ tasks, onToggle, onDelete }) {
   if (tasks.length === 0) {
-    return (
-      <p className="text-center text-gray-500 bg-white rounded-lg shadow p-6">
-        No tasks yet. Add your first task above.
-      </p>
-    );
+    return <p className="empty-state">No tasks yet. Add your first task above!</p>;
   }
 
   return (
-    <ul className="space-y-3">
+    <ul className="task-list">
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} />
+        <TaskItem
+          key={task.id}
+          task={task}
+          onToggle={onToggle}
+          onDelete={onDelete}
+        />
       ))}
     </ul>
   );
-};
-
-export default TaskList;
+}

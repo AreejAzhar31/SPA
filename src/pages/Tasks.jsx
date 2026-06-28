@@ -1,19 +1,14 @@
-import TaskForm from "../components/TaskForm.jsx";
-import TaskList from "../components/TaskList.jsx";
+import TaskForm from "../components/TaskForm";
+import TaskList from "../components/TaskList";
 
-const Tasks = () => {
+export default function Tasks({ tasks, onAdd, onToggle, onDelete }) {
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-800">Tasks</h1>
-      <TaskForm />
-      <div>
-        <h2 className="text-lg font-semibold text-gray-800 mb-3">
-          Your Tasks
-        </h2>
-        <TaskList />
-      </div>
-    </div>
-  );
-};
+    <section>
+      <h2>Tasks</h2>
+      <p className="subtitle">Add, complete, or delete your tasks.</p>
 
-export default Tasks;
+      <TaskForm onAdd={onAdd} />
+      <TaskList tasks={tasks} onToggle={onToggle} onDelete={onDelete} />
+    </section>
+  );
+}

@@ -1,34 +1,33 @@
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-const Dashboard = () => {
-  const tasks = useSelector((state) => state.tasks.tasks);
-
-  const totalTasks = tasks.length;
-  const completedTasks = tasks.filter((task) => task.completed).length;
-  const pendingTasks = totalTasks - completedTasks;
-
-  const stats = [
-    { label: "Total Tasks", value: totalTasks, color: "text-blue-600" },
-    { label: "Completed Tasks", value: completedTasks, color: "text-green-600" },
-    { label: "Pending Tasks", value: pendingTasks, color: "text-yellow-600" },
-  ];
+export default function Dashboard({ tasks }) {
+  const total = tasks.length;
+  const completed = tasks.filter((task) => task.completed).length;
+  const pending = total - completed;
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Dashboard</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="bg-white rounded-lg shadow p-6 text-center"
-          >
-            <p className={`text-3xl font-bold ${stat.color}`}>{stat.value}</p>
-            <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+    <section>
+      <h2>Dashboard</h2>
+      <p className="subtitle">Summary of your current tasks.</p>
 
-export default Dashboard;
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h3>{total}</h3>
+          <p>Total Tasks</p>
+        </div>
+        <div className="stat-card">
+          <h3>{completed}</h3>
+          <p>Completed Tasks</p>
+        </div>
+        <div className="stat-card">
+          <h3>{pending}</h3>
+          <p>Pending Tasks</p>
+        </div>
+      </div>
+
+      <Link to="/tasks" className="btn btn-primary">
+        Go to Tasks
+      </Link>
+    </section>
+  );
+}

@@ -1,22 +1,23 @@
-const STORAGE_KEY = "taskManager.tasks";
+// localStorage.js
+// Small helper functions for reading/writing the tasks array to
+// the browser's localStorage, so tasks persist between page reloads.
 
-// Reads tasks from Local Storage. Returns an empty array if nothing is saved
-// or if the saved data is corrupted.
-export const loadTasks = () => {
+const STORAGE_KEY = "tasks";
+
+export function loadTasks() {
   try {
-    const data = localStorage.getItem(STORAGE_KEY);
-    return data ? JSON.parse(data) : [];
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : null;
   } catch (error) {
-    console.error("Failed to load tasks from local storage:", error);
-    return [];
+    console.error("Failed to load tasks from localStorage:", error);
+    return null;
   }
-};
+}
 
-// Saves the given tasks array to Local Storage.
-export const saveTasks = (tasks) => {
+export function saveTasks(tasks) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
   } catch (error) {
-    console.error("Failed to save tasks to local storage:", error);
+    console.error("Failed to save tasks to localStorage:", error);
   }
-};
+}
