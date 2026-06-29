@@ -1,19 +1,18 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar.jsx";
+import Footer from "./Footer.jsx";
 
-// Shared layout used on every page: navbar + main content area
 export default function Layout() {
   return (
-    <div className="layout">
-      <header className="app-header">
-        <h1>Task Manager</h1>
-      </header>
-
+    <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      <main className="main-content">
+      <main className="flex-1 max-w-3xl mx-auto w-full px-4 py-6">
         <Outlet />
       </main>
+
+      <Footer />
     </div>
   );
 }
+
