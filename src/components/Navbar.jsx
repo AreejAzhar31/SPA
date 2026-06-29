@@ -1,30 +1,6 @@
 import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
-  const linkClass = ({ isActive }) =>
-    isActive ? "nav-link active" : "nav-link";
-
-  return (
-    <nav className="navbar">
-      <NavLink to="/" end className={linkClass}>
-        Dashboard
-      </NavLink>
-      <NavLink to="/tasks" className={linkClass}>
-        Tasks
-      </NavLink>
-      <NavLink to="/about" className={linkClass}>
-        About
-      </NavLink>
-    </nav>
-  );
-}
-import { NavLink } from "react-router-dom";
-
-// Navbar.jsx
-// Top navigation bar. NavLink's className callback lets us apply
-// different Tailwind classes depending on whether the link is active.
-
-function Navbar() {
   const linkClasses = ({ isActive }) =>
     `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
       isActive
@@ -47,5 +23,3 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;
