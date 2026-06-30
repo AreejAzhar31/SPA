@@ -4,10 +4,14 @@ import Footer from "./Footer.jsx";
 
 export default function Layout() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="layout">
+      <header className="app-header">
+        <h1>Task Manager</h1>
+      </header>
+
       <Navbar />
 
-      <main className="flex-1 max-w-3xl mx-auto w-full px-4 py-6">
+      <main className="main-content">
         <Outlet />
       </main>
 

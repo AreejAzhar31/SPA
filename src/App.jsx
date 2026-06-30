@@ -15,17 +15,19 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Dashboard tasks={tasks} />} />
         <Route
-          path="tasks"
+          index
           element={
-            <Tasks
+            <Dashboard
               tasks={tasks}
-              onAdd={addTask}
               onToggle={toggleTask}
               onDelete={deleteTask}
             />
           }
+        />
+        <Route
+          path="tasks"
+          element={<Tasks onAdd={addTask} />}
         />
         <Route path="about" element={<About />} />
       </Route>
@@ -34,3 +36,4 @@ function App() {
 }
 
 export default App;
+
