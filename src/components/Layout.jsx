@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar.jsx";
+import Footer from "./Footer.jsx";
 
-// Shared layout used on every page: navbar + main content area
 export default function Layout() {
   return (
     <div className="layout">
@@ -14,6 +14,8 @@ export default function Layout() {
       <main className="main-content">
         <Outlet />
       </main>
+
+      <Footer />
     </div>
   );
 }

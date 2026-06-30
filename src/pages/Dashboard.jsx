@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import TaskList from "../components/TaskList";
 
-export default function Dashboard({ tasks }) {
+export default function Dashboard({ tasks, onToggle, onDelete }) {
   const total = tasks.length;
   const completed = tasks.filter((task) => task.completed).length;
   const pending = total - completed;
@@ -25,9 +25,7 @@ export default function Dashboard({ tasks }) {
         </div>
       </div>
 
-      <Link to="/tasks" className="btn btn-primary">
-        Go to Tasks
-      </Link>
+      <TaskList tasks={tasks} onToggle={onToggle} onDelete={onDelete} />
     </section>
   );
 }

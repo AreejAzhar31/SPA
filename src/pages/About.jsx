@@ -4,8 +4,7 @@ export default function About() {
       <h2>About This Application</h2>
       <p>
         Task Manager is a small Single Page Application (SPA) built with React
-         It lets you manage a simple to-do list
-        without a backend or login.
+        It lets you manage a simple to-do list without a backend or login.
       </p>
 
       <h3>Assignment Features</h3>

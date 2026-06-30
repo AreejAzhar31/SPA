@@ -48,7 +48,7 @@ src/
 ## Routes
 
 | Route    | Page      |
-|----------|-----------|
+| -------- | --------- |
 | `/`      | Dashboard |
 | `/tasks` | Tasks     |
 | `/about` | About     |
