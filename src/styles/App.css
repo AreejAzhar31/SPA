@@ -208,9 +208,8 @@ section h2 {
 
 .task-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: 8px;
   background: #fff;
   padding: 14px 16px;
   margin-bottom: 10px;
@@ -221,6 +220,14 @@ section h2 {
 
 .task-item:hover {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
 }
 
 .task-checkbox {
@@ -238,6 +245,51 @@ section h2 {
 .task-item.completed .task-title {
   text-decoration: line-through;
   color: #9ca3af;
+}
+
+.task-details {
+  padding-left: 28px;
+}
+
+.task-description {
+  margin: 0 0 6px 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+  word-break: break-word;
+}
+
+.task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.priority-badge {
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.priority-low {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.priority-medium {
+  background: #fef9c3;
+  color: #ca8a04;
+}
+
+.priority-high {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.task-due-date {
+  color: #6b7280;
 }
 
 .empty-state {
